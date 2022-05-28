@@ -1,0 +1,15 @@
+@hostname = http://localhost:10000
+
+get {{hostname}}/songs
+###
+get {{hostname}}/songs/byCollections/:collectionId
+###
+get {{hostname}}/songs/byAccount/:accountId
+###
+get {{hostname}}/collections/byAccount/:accountId
+###
+get {{hostname}}/collections/empty
+###
+get {{hostname}}/collections/bySongs/:songId
+###
+get {{hostname}}/accounts/activeUsers
