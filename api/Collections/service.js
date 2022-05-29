@@ -16,33 +16,16 @@ async function getEmptyCollections(req, res) {
     return res.status(status).json(queryResponse);
 }
 
-async function getCollectionsByAccountId(req, res) {
-    const { accountId } = req.params;
-
+async function getSongsByCollectionId(req, res) {
+    const { collectionId } = req.params;
     let status = 200;
-    const queryResponse = await collections.findAll({
-        where: {
-            accountId,
-        },
-    });
-
-    if (isEmpty(queryResponse)) {
-        status = 404;
-    }
-
-    return res.status(status).json(queryResponse);
-}
-
-async function getCollectionsBySongId(req, res) {
-    let status = 200;
-    const { songId } = req.params;
-    const queryResponse = await collections.findAll({
+    const queryResponse = await songs.findAll({
         include: {
-            model: songs,
+            model: collections,
             attributes: [],
             where: {
-                id: songId
-            }
+                id: collectionId,
+            },
         },
     });
 
@@ -55,6 +38,5 @@ async function getCollectionsBySongId(req, res) {
 
 module.exports = {
     getEmptyCollections,
-    getCollectionsByAccountId,
-    getCollectionsBySongId,
+    getSongsByCollectionId,
 };

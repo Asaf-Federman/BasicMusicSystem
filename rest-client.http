@@ -1,15 +1,15 @@
 @hostname = http://localhost:10000
 
-get {{hostname}}/songs
+GET {{hostname}}/accounts/activeAccounts
 ###
-get {{hostname}}/songs/byCollections/:collectionId
+GET {{hostname}}/accounts/:accountId/collections
 ###
-get {{hostname}}/songs/byAccount/:accountId
+GET {{hostname}}/accounts/:accountId/songs
 ###
-get {{hostname}}/collections/byAccount/:accountId
+GET {{hostname}}/collections/empty
 ###
-get {{hostname}}/collections/empty
+GET {{hostname}}/collections/:collectionId/songs
 ###
-get {{hostname}}/collections/bySongs/:songId
+GET {{hostname}}/songs
 ###
-get {{hostname}}/accounts/activeUsers
+GET {{hostname}}/songs/:songId/collections

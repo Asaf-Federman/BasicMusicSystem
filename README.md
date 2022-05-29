@@ -10,36 +10,36 @@ Users O:M Collections
 
 ## Relevant APIs
 
-### GET /songs
+### GET /accounts/activeAccounts
 
-Get songs with relevant collection title(s)
+Get all active accounts
 
-### GET /songs/byCollections/:id
+### GET /accounts/:accountId/collections
 
-Get songs by collection id
+Get all collections for account`s id
 
-### GET /songs/byAccounts/:id
+### GET /accounts/:accountId/songs
 
-Get songs by account id
-
-### GET /collections/byAccounts/:id
-
-Get collections by account id
+Get all songs for account`s id
 
 ### GET /collections/empty
 
 Get all empty collections
 
-### GET /collections/bySongs/:id
+### GET /collections/:collectionId/songs
 
-get all collections by song id
+Get all songs for collection`s id
 
-### GET /accounts/activeUsers
+### GET /songs
 
-get all active users
+Get all songs with relevant collection title(s)
+
+### GET /songs/:songId/collections
+
+Get all collections for song`s id
 
 ## Notes
 
 [Makefile](./Makefile)\
 [Environment Variables File](./.env)\
-[Test example](./api/Accounts/__tests__.js/services.test.js) Other services would have similar tests
+[Test example](./api/Accounts/__tests__.js/services.test.js) Other endpoints would have similar tests

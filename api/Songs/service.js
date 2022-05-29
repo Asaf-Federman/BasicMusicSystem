@@ -18,35 +18,15 @@ async function getSongs(req, res) {
     return res.status(status).json(queryResponse);
 }
 
-async function getSongsByCollectionId(req, res) {
-    const { collectionId } = req.params;
+async function getCollectionsBySongId(req, res) {
     let status = 200;
-    const queryResponse = await songs.findAll({
+    const { songId } = req.params;
+    const queryResponse = await collections.findAll({
         include: {
-            model: collections,
+            model: songs,
             attributes: [],
             where: {
-                id: collectionId
-            }
-        },
-    });
-
-    if (isEmpty(queryResponse)) {
-        status = 404;
-    }
-
-    return res.status(status).json(queryResponse);
-}
-
-async function getSongsByAccountId(req, res) {
-    const { accountId } = req.params;
-    let status = 200;
-    const queryResponse = await songs.findAll({
-        include: {
-            model: collections,
-            attributes: [],
-            where: {
-                accountId,
+                id: songId,
             },
         },
     });
@@ -60,6 +40,5 @@ async function getSongsByAccountId(req, res) {
 
 module.exports = {
     getSongs,
-    getSongsByCollectionId,
-    getSongsByAccountId,
+    getCollectionsBySongId,
 };

@@ -1,13 +1,12 @@
 const express = require('express');
 require('express-async-errors');
 
-const { accountIdValidator, collectionIdValidator } = require('../validators/validators');
-const { getSongs, getSongsByCollectionId, getSongsByAccountId } = require('./service');
+const { songIdValidator } = require('../validators/validators');
+const { getSongs, getCollectionsBySongId } = require('./service');
 
 const router = express.Router();
 
 router.get('/', getSongs);
-router.get('/byCollections/:collectionId', collectionIdValidator, getSongsByCollectionId);
-router.get('/byAccounts/:accountId', accountIdValidator, getSongsByAccountId);
+router.get('/:songId/collections', songIdValidator, getCollectionsBySongId);
 
 module.exports = router;
